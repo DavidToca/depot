@@ -5,8 +5,9 @@ class CartsController < ApplicationController
     @carts = Cart.all
 
     respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @carts }
+
+        format.html # index.html.erb
+        format.json { render json: @carts }
     end
   end
 
@@ -15,14 +16,21 @@ class CartsController < ApplicationController
   def show
     begin
     @cart = Cart.find(params[:id])
+
     rescue ActiveRecord::RecordNotFound
       logger.error "Attempt to access invalid cart #{params[:id]}"
       redirect_to store_url, :notices => 'Invalid cart'
     else
-      respond_to do |format|
-        format.html # show.html.erb
-      format.json { render json: @cart }
-    end
+      if @cart.line_items.empty?
+       respond_to do |format|
+           format.html { redirect_to store_url, :notice => 'Your cart is currently empty' }
+       end
+      else
+       respond_to do |format|
+         format.html # show.html.erb
+         format.json { render json: @cart }
+       end
+     end
     end
   end
 
