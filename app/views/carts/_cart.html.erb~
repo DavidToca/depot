@@ -1,17 +1,15 @@
-<p>Your pragmatic Cart</p>
-
 <div class="cart_title">Your Cart</div>
 <table>
-  <%= render(@cart.line_items)  %>
-<% if  @cart.line_items.any? %>
+  <%= render(cart.line_items)  %>
+<% if  cart.line_items.any? %>
 <tr class="total_line">
   <td colspan="2">Total</td>
-  <td class="total_cell"><%= number_to_currency(@cart.total_price)%></td>
+  <td class="total_cell"><%= number_to_currency(cart.total_price)%></td>
 </tr>
 
 </table>
 <span>
-<%= button_to 'Empty cart', @cart, :method => :delete, :confirm => 'Are you sure?'%>
+<%= button_to 'Empty cart', cart, :method => :delete, :confirm => 'Are you sure?'%>
 <%= button_to 'Keep shoping', store_url%>
 </span>
 <% else %>
