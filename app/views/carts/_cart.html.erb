@@ -9,6 +9,7 @@
 
 </table>
 <span>
+<%= button_to "Checkout", new_order_path, :method => :get%>
 <%= button_to 'Empty cart', cart, :method => :delete, :confirm => 'Are you sure?'%>
 <%= button_to 'Keep shoping', store_url%>
 </span>
