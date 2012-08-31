@@ -1,4 +1,1 @@
-page.replace_html('cart', '<H1>OTRO TEST</h1>')
-
-
-page[:current_item].visual_effect :highlight, :startcolor => "#88ff88", :endcolor => "#114411"
+page.replace_html('cart', render(@cart))

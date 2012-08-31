@@ -46,10 +46,10 @@ class LineItemsController < ApplicationController
     @current_item = @line_item
     respond_to do |format|
       if @line_item.save
-        format.js { @current_item }
+#        format.js {render :content_type => 'text/javascript'}
+#        format.js 
+#        format.js { render :action=>:application }
         format.html { redirect_to store_url }
-        format.xml {render :xml => @line_item, :status => :created, :location => @line_item }
-        
 #        format.json { render json: @line_item, status: :created, location: @line_item }
       else
         format.html { render action: "new" }
